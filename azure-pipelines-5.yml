@@ -6,7 +6,5 @@ pool:
 
 steps:
 - script: |
-    echo JAVA_HOME=%JAVA_HOME%
-    java -version
-    mvn -version
-  displayName: 'Debug Java'
+    mvn clean package
+  displayName: 'Build Maven Project'
