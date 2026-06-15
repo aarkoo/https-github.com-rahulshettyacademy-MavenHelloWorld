@@ -5,6 +5,20 @@ pool:
   name: Default
 
 steps:
+
 - script: |
     mvn clean package
   displayName: 'Build Maven Project'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.war'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy WAR to Artifact Staging'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'WAR-FILE'
+    publishLocation: 'Container'
+  displayName: 'Publish WAR Artifact'
