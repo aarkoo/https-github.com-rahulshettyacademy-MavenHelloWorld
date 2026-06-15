@@ -1,0 +1,17 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+- script: |
+    echo "Checking Java version..."
+    java -version
+
+    echo "Checking Maven version..."
+    mvn -version
+
+    echo "Building project..."
+    mvn clean package
+  displayName: 'Build Maven Project'
