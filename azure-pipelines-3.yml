@@ -1,0 +1,13 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+- script: |
+    echo JAVA_HOME=%JAVA_HOME%
+    java -version
+    mvn -version
+    mvn clean package
+  displayName: 'Build Maven Project'
